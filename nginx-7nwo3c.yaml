@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: my-nginx-7nwo3c
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-7nwo3c
+  namespace: my-nginx-7nwo3c
+  labels:
+    name: nginx-7nwo3c
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: nginx-7nwo3c
+  template:
+    metadata:
+      namespace: my-nginx-7nwo3c
+      labels:
+        name: nginx-7nwo3c
+    spec:
+      containers:
+      - name: nginx-7nwo3c
+        image: nginx
+        ports:
+        - containerPort: 80
+
